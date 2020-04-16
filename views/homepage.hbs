@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Homepage</title>
+    <style>
+body, html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  
+}
+
+</style>
+</head>
+
+<body class="bg">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/homepage">ATN</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Management
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/Employee">Employees</a></li>
+          <li><a href="/SanPham">Products</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Login</a></li>
+      <li><a href="#">Sign up</a></li>
+    </ul>
+
+    <form class="navbar-form navbar-right" action="/Sanpham/search" method="POST">
+      <div class="form-group">
+        <input type="text" name ="tenSP" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-success" value="Search">Search</button>
+    </form>
+
+  </div>
+</nav>
+      
+<h2 style="text-align:center"><b style="color:black" >Popular toys</b></h2>
+
+<div class="container">
+  <div class="mySlides">
+    <div class="numbertext">1 / 6</div>
+    <img src="dochoi1.jpg" style="width:50%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">2 / 6</div>
+    <img src="2.jfif" style="width:50%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">3 / 6</div>
+    <img src="3.jpg" style="width:100%">
+  </div>
+    
+  <div class="mySlides">
+    <div class="numbertext">4 / 6</div>
+    <img src="4.jpg" style="width:50%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">5 / 6</div>
+    <img src="5.jpg" style="width:50%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">6 / 6</div>
+    <img src="6.jfif" style="width:50%">
+  </div>
+  
+    
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <div class="row">
+    <div class="column">
+      <img class="demo cursor" src="dochoi1.jpg" style="width:100%" onclick="currentSlide(1)" alt="Minecraft Dungeon   $1.2000.000VND">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="2.jfif" style="width:100%" onclick="currentSlide(2)" alt="Minecraft LifeBoat   $1.5000.000VND">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="3.jpg" style="width:100%" onclick="currentSlide(3)" alt="Avengers - 8 superheroes   $2.000.000VND">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="4.jpg" style="width:100%" onclick="currentSlide(4)" alt="Jorker vs Batman   $800.000VND">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="5.jpg" style="width:100%" onclick="currentSlide(5)" alt="The Drill machine   $1.000.000VND">
+    </div>    
+    <div class="column">
+      <img class="demo cursor" src="6.jfif" style="width:100%" onclick="currentSlide(6)" alt="Bat's wings   $500.000VND">
+    </div> 
+  </div>
+</div>
+
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+<br> <br> <br>
+<footer class="text-muted">
+  <div  class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+    </p>
+    <p><b> ATN is proud to be the leading in selling toys to teenagers from many province over Vietnam!</b></p>
+    <p><b> Contact us: <a href="#">ATNcompany@gmail.com</a></a></b></p>
+    <p><b>Number: 0987265298</b></p>
+  </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+</body>
+</html>

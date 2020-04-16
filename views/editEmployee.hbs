@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Product Management</title>
+     <style>
+body, html {
+  height: 100%;
+  margin: 0;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  
+}
+</style>
+</head>
+<body class = "bg" >
+ <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/homepage">ATN</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown">Management
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/Employee">Employees</a></li>
+          <li><a href="/SanPham">Products</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Login</a></li>
+      <li><a href="#">Sign up</a></li>
+    </ul>
+
+    <form class="navbar-form navbar-right" action="/Employee/searchE" method="POST">
+      <div class="form-group">
+        <input type="text" name ="tenE" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-success" value="Search">Search</button>
+    </form>
+  </div>
+</nav>
+
+  <div class="container">
+    <form action="/Employee/editE" method="POST">
+    <input type="hidden" name="id" value="{{Employee._id}}">
+    <div class="form-group" style="width: 50%">
+      <label for="usr">Name</label>
+      <input type="text" class="form-control" id="usr" name="name" value="{{Employee.Name}}">
+    </div>
+    <div class="form-group" style="width: 50%">
+      <label for="pwd">DoB</label>
+      <input type="text" class="form-control" id="pwd" name="dob" value="{{Employee.DoB}}">
+    </div>
+    <div class="form-group" style="width: 50%">
+      <label for="pwd">Number</label>
+      <input type="text" class="form-control" id="pwd" name="number" value="{{Employee.Number}}">
+    </div>
+    <div class="form-group" style="width: 50%">
+      <label for="pwd">Email</label>
+      <input type="text" class="form-control" id="pwd" name="email" value="{{Employee.Email}}">
+    </div>
+    <input type="submit" value="Update" class="btn btn-success">
+  </form>
+</div>
+  <br> <br> <br>
+<footer class="text-muted">
+  <div  class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+    </p>
+    <p><b> ATN is proud to be the leading in selling toys to teenagers from many province over Vietnam!</b></p>
+    <p><b> Contact us: <a href="#">ATNcompany@gmail.com</a></a></b></p>
+    <p><b>Number: 0987265298</b></p>
+  </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+</body>  
+
+</html>
