@@ -106,13 +106,53 @@ router.get('/photo/:id', (req, res) => {
 var filename = req.params.id;
 db.collection('SanPham').findOne({'_id': ObjectId(filename)}, (err, result) => {
     if (err) return console.log(err);
-    res.contentType('image/jpg');
+    res.contentType('image/jpeg');
     res.send(result.image.buffer);
     //res.render('allSanPham',{img:result.image.buffer});
 })
 });
 
-//update SanPham
+
+/* //update SanPham
+router.get('/edit',async(req,res)=>{
+    let id = req.query.id;
+    var ObjectID = require('mongodb').ObjectID;
+    let client= await MongoClient.connect(url);
+    let dbo = client.db("NoSQLBoosterSamples");
+    let results = await dbo.collection("SanPham").findOne({"_id" : ObjectID(id)});
+    res.render('editSanPham',{SanPham:results});
+})
+
+router.post('/edit',upload.single('picture'), async(req,res)=>{
+    let id = req.body.id;
+    console.log("ID " + id);
+    let name = req.body.name;
+    let color = req.body.color;
+    let price = req.body.price;
+    var img = fs.readFileSync(req.file.path);
+    var encode_image = img.toString('base64');
+    let contentType = req.file.mimetype;
+    image = new Buffer(encode_image, 'base64');
+    let newValues = {
+        $set: {
+            TenSP: name,
+            Price: price,
+            Color: color,
+            contentType: contentType,
+            image: image
+        }
+    };
+    var ObjectID = require('mongodb').ObjectID;
+    let condition = {"_id": ObjectID(id)};
+
+    let client = await MongoClient.connect(url);
+    let dbo = client.db("NoSQLBoosterSamples");
+    await dbo.collection("SanPham").updateOne(condition, newValues);
+    let results = await dbo.collection("SanPham").find({}).toArray();
+    res.render('allSanPham', {products: results});
+}); */
+
+    //update SanPham
 router.get('/edit',async(req,res)=>{
     let id = req.query.id;
     var ObjectID = require('mongodb').ObjectID;
@@ -139,6 +179,7 @@ router.post('/edit', async(req,res)=>{
     res.render('allSanPham',{SanPham:results});
     
 })
+
 
 //delete truc tiep
 router.get('/delete', async (req, res) => {
