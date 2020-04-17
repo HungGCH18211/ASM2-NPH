@@ -1,0 +1,32 @@
+{
+  "name": "asm2",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000A\u0000S\u0000M\u00002\u0000-\u0000N\u0000P\u0000H\u0000\r\u0000 \u0000",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "consolidate": "^0.15.1",
+    "express": "^4.17.1",
+    "fs-extra": "^9.0.0",
+    "handlebars": "^4.7.4",
+    "mongodb": "^3.5.5",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.2",
+    "package": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node myserver.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HungGCH18211/ASM2-NPH.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HungGCH18211/ASM2-NPH/issues"
+  },
+  "homepage": "https://github.com/HungGCH18211/ASM2-NPH#readme"
+}
