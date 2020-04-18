@@ -2,7 +2,7 @@
   "name": "asm2",
   "version": "1.0.0",
   "description": "��#\u0000 \u0000A\u0000S\u0000M\u00002\u0000-\u0000N\u0000P\u0000H\u0000\r\u0000 \u0000",
-  "main": "homepage.js",
+  "main": "myserver.js",
   "dependencies": {
     "body-parser": "^1.19.0",
     "consolidate": "^0.15.1",
@@ -17,7 +17,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node homepage.js"
+    "start": "node myserver.js"
   },
   "repository": {
     "type": "git",
