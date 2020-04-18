@@ -27,4 +27,4 @@ app.use('/SanPham', SanPhamController);
 app.use('/Employee', EmployeeController);
 app.use('/upload',uploadFileController);
 
-var server=app.listen(5000,function() {});
+var server=app.listen(process.env.PORT || 5000,function() {});
