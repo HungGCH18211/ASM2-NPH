@@ -22,7 +22,7 @@ var EmployeeController = require("./Employee.js");
 var uploadFileController= require('./uploadFile.js');
 
 
-app.use('/Homepage', HomepageController);
+app.use('/', HomepageController);
 app.use('/SanPham', SanPhamController);
 app.use('/Employee', EmployeeController);
 app.use('/upload',uploadFileController);
