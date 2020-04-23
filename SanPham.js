@@ -62,7 +62,6 @@ var storage = multer.diskStorage({
 });
 
 var upload = multer({storage: storage});
-
 MongoClient.connect(url, (err, client) => {
     if (err) return console.log(err);
     db = client.db('ATNCompany')
@@ -70,11 +69,9 @@ MongoClient.connect(url, (err, client) => {
 router.get('/insert', async (req, res) => {
     res.render('allSanPham');
 });
-
 router.post('/insert',upload.single('picture'), async (req, res) => {
 var img = fs.readFileSync(req.file.path);
 var encode_image = img.toString('base64');
-
 var insertProducts = {
     _id: req.body._id,
     TenSP: req.body.tenSP,
@@ -93,14 +90,12 @@ await dbo.collection("Product").insertOne(insertProducts, (err, result)=>{
 let result2 = await dbo.collection("Product").find({}).toArray();
 res.render('allSanPham', {SanPham: result2});
 });
-
 router.get('/photos', (req, res) => {
 db.collection('Product').find().toArray((err, result) => {
     const imgArray = result.map(element => element._id);
     console.log(imgArray);
     if (err) return console.log(err)
-    res.send(imgArray)
-})
+    res.send(imgArray) })
 });
 router.get('/photo/:id', (req, res) => {
 var filename = req.params.id;
@@ -162,7 +157,6 @@ router.get('/edit',async(req,res)=>{
     let results = await dbo.collection("Product").findOne({"_id" : ObjectID(id)});
     res.render('editSanPham',{SanPham:results});
 })
-
 router.post('/edit', async(req,res)=>{
     let id = req.body.id;
     let name = req.body.name;
@@ -171,14 +165,11 @@ router.post('/edit', async(req,res)=>{
     let newValues ={$set : {TenSP: name, Color : color, Price:price}};
     var ObjectID = require('mongodb').ObjectID;
     let condition = {"_id" : ObjectID(id)};
-    
     let client= await MongoClient.connect(url);
     let dbo = client.db("ATNCompany");
     await dbo.collection("Product").updateOne(condition,newValues);
-
     let results = await dbo.collection("Product").find({}).toArray();
     res.render('allSanPham',{SanPham:results});
-    
 })
 
 
