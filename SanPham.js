@@ -10,8 +10,8 @@ var url ='mongodb+srv://ChuppaChups:1234@4321@beginning-lbnvt.azure.mongodb.net/
 router.get('/',async (req,res)=>  // có async thì phải có await
 {
     let client= await MongoClient.connect(url);
-    let dbo = client.db("NoSQLBoosterSamples");
-    let results = await dbo.collection("SanPham").find({}).toArray();
+    let dbo = client.db("ATNCompany");
+    let results = await dbo.collection("Product").find({}).toArray();
     res.render('allSanPham',{SanPham:results});
 })
 
@@ -25,7 +25,7 @@ router.post('/search',async (req,res)=>{ //search
   let searchSP = req.body.tenSP;
   let client= await MongoClient.connect(url);
   let dbo = client.db("NoSQLBoosterSamples");
-  let results = await dbo.collection("SanPham").find({"TenSP":searchSP}).toArray();
+  let results = await dbo.collection("Product").find({"TenSP":searchSP}).toArray();
     res.render('allSanPham',{SanPham:results});
 })
 
@@ -65,7 +65,7 @@ var upload = multer({storage: storage});
 
 MongoClient.connect(url, (err, client) => {
     if (err) return console.log(err);
-    db = client.db('NoSQLBoosterSamples')
+    db = client.db('ATNCompany')
 });
 router.get('/insert', async (req, res) => {
     res.render('allSanPham');
@@ -84,18 +84,18 @@ var insertProducts = {
     image: new Buffer(encode_image, 'base64')
 };
 let client = await MongoClient.connect(url);
-let dbo = client.db("NoSQLBoosterSamples");
-await dbo.collection("SanPham").insertOne(insertProducts, (err, result)=>{
+let dbo = client.db("ATNCompany");
+await dbo.collection("Product").insertOne(insertProducts, (err, result)=>{
     console.log(result)
     if (err) return console.log(err)
     console.log('saved to database')
 });
-let result2 = await dbo.collection("SanPham").find({}).toArray();
+let result2 = await dbo.collection("Product").find({}).toArray();
 res.render('allSanPham', {SanPham: result2});
 });
 
 router.get('/photos', (req, res) => {
-db.collection('SanPham').find().toArray((err, result) => {
+db.collection('Product').find().toArray((err, result) => {
     const imgArray = result.map(element => element._id);
     console.log(imgArray);
     if (err) return console.log(err)
@@ -104,11 +104,12 @@ db.collection('SanPham').find().toArray((err, result) => {
 });
 router.get('/photo/:id', (req, res) => {
 var filename = req.params.id;
-db.collection('SanPham').findOne({'_id': ObjectId(filename)}, (err, result) => {
+db.collection('Product').findOne({'_id': ObjectId(filename)}, (err, result) => {
     if (err) return console.log(err);
     res.contentType('image/jpeg');
     res.send(result.image.buffer);
-    //res.render('allSanPham',{img:result.image.buffer});
+    res.render('allSanPham',{img:result.image.buffer});
+    //res.render('alSanPham',{img:filename});
 })
 });
 
@@ -157,8 +158,8 @@ router.get('/edit',async(req,res)=>{
     let id = req.query.id;
     var ObjectID = require('mongodb').ObjectID;
     let client= await MongoClient.connect(url);
-    let dbo = client.db("NoSQLBoosterSamples");
-    let results = await dbo.collection("SanPham").findOne({"_id" : ObjectID(id)});
+    let dbo = client.db("ATNCompany");
+    let results = await dbo.collection("Product").findOne({"_id" : ObjectID(id)});
     res.render('editSanPham',{SanPham:results});
 })
 
@@ -172,10 +173,10 @@ router.post('/edit', async(req,res)=>{
     let condition = {"_id" : ObjectID(id)};
     
     let client= await MongoClient.connect(url);
-    let dbo = client.db("NoSQLBoosterSamples");
-    await dbo.collection("SanPham").updateOne(condition,newValues);
+    let dbo = client.db("ATNCompany");
+    await dbo.collection("Product").updateOne(condition,newValues);
 
-    let results = await dbo.collection("SanPham").find({}).toArray();
+    let results = await dbo.collection("Product").find({}).toArray();
     res.render('allSanPham',{SanPham:results});
     
 })
@@ -186,10 +187,10 @@ router.get('/delete', async (req, res) => {
     let client = await MongoClient.connect(url);
     let id = req.query.id;
     var ObjectID = require('mongodb').ObjectID;
-    let dbo = client.db("NoSQLBoosterSamples");
+    let dbo = client.db("ATNCompany");
     let condition = { "_id": ObjectID(id) };
-    await dbo.collection("SanPham").deleteOne(condition);
-    let results = await dbo.collection("SanPham").find({}).toArray();
+    await dbo.collection("Product").deleteOne(condition);
+    let results = await dbo.collection("Product").find({}).toArray();
     res.render('allSanPham', { SanPham:results });
 })
 
