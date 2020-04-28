@@ -24,7 +24,7 @@ router.get('/search',(req,res)=>{
 router.post('/search',async (req,res)=>{ //search
   let searchSP = req.body.tenSP;
   let client= await MongoClient.connect(url);
-  let dbo = client.db("NoSQLBoosterSamples");
+  let dbo = client.db("ATNCompany");
   let results = await dbo.collection("Product").find({"TenSP":searchSP}).toArray();
     res.render('allSanPham',{SanPham:results});
 })
